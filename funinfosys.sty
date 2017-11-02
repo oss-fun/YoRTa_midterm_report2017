@@ -10,16 +10,16 @@
 \newlength{\hyodaioffset}
 \setlength{\hyodaioffset}{10mm} 
 \typeout{*** FUN Graduation Study Midterm Report Style ***}
- \topmargin -1.04cm \headheight 5mm \headsep 8mm \footheight 20pt \footskip
-30pt 
+ \topmargin -1.04cm \headheight 5mm \headsep 8mm \footskip 30pt % \footheight 20pt 
 %
-\textheight 9.8in \textwidth 6.55in \columnsep .38in \columnseprule 0pt 
+\textheight 8.7in \textwidth 5.65in \columnsep .38in \columnseprule 0pt 
 \oddsidemargin 0mm \evensidemargin 0mm
 
+\def\course#1{\gdef\@course{#1}}
 \addtolength{\oddsidemargin}{\suiheioffset}
 \addtolength{\evensidemargin}{\suiheioffset}
 % ヘッダあり，フッタなし
-\def\@oddhead{\begin{minipage}{\textwidth}{{\shortstack[l]{FUN Graduation Study\\ Midterm  Report}}\hfill{\small Information Systems Course}\vspace{-4mm}\par\mbox{}\hrulefill\mbox{}}\end{minipage}}
+\def\@oddhead{\begin{minipage}{\textwidth}{{\shortstack[l]{FUN Graduation Study\\ Midterm  Report}}\hfill{\small \@course}\vspace{-4mm}\par\mbox{}\hrulefill\mbox{}}\end{minipage}}
 \def\@evenhead{\@oddhead}
 \def\@oddfoot{}\def\@evenfoot{}
 
