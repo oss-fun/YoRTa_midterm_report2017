@@ -3,23 +3,30 @@
 %
 %          ファイル名："funinfosys.sty"
 %
-% 印刷位置の水平方向微調整パラメータ
-\newlength{\suiheioffset}
-\setlength{\suiheioffset}{0mm} 
-% 表題左部分の空白調整パラメータ
-\newlength{\hyodaioffset}
-\setlength{\hyodaioffset}{10mm} 
 \typeout{*** FUN Graduation Study Midterm Report Style ***}
- \topmargin -1.04cm \headheight 5mm \headsep 8mm \footskip 30pt % \footheight 20pt 
-%
-\textheight 8.7in \textwidth 5.65in \columnsep .38in \columnseprule 0pt 
-\oddsidemargin 0mm \evensidemargin 0mm
+
+% 文字数と行数の設定
+\def\setpageconfig#1#2#3{%
+    \makeatletter
+    \newcount\@chars\newcount\@lines
+    \@chars=#1                      % 1行の文字数
+    \@lines=#2                      % 1ページの行数
+
+    \newdimen\@kanjiskip
+    \@kanjiskip=\dimexpr(\textwidth-1zw*\@chars)/\numexpr\@chars-1
+    \newdimen\@@kanjiskip
+    \@@kanjiskip=\dimexpr\@kanjiskip/10
+
+    \baselineskip=\dimexpr\textheight/\@lines
+    \kanjiskip=\@kanjiskip plus \@@kanjiskip minus \@@kanjiskip
+    \parindent=\dimexpr\parindent+\@kanjiskip
+
+    \setlength{\columnsep}{\dimexpr(\parindent*#3)}
+    \makeatother%
+}
 
 \def\course#1{\gdef\@course{#1}}
-\addtolength{\oddsidemargin}{\suiheioffset}
-\addtolength{\evensidemargin}{\suiheioffset}
-% ヘッダあり，フッタなし
-\def\@oddhead{\begin{minipage}{\textwidth}{{\shortstack[l]{FUN Graduation Study\\ Midterm  Report}}\hfill{\small \@course}\vspace{-4mm}\par\mbox{}\hrulefill\mbox{}}\end{minipage}}
+\def\@oddhead{\begin{minipage}{\textwidth}{{\shortstack[l]{FUN Graduation Study\\ Midterm  Report}}\hfill{\small \@course}\vspace{-4truemm}\par\mbox{}\hrulefill\mbox{}}\end{minipage}}
 \def\@evenhead{\@oddhead}
 \def\@oddfoot{}\def\@evenfoot{}
 
@@ -30,7 +37,7 @@
  \begingroup
  \def\thefootnote{\fnsymbol{footnote}}
  \def\@makefnmark{\hbox 
- to 0pt{$^{\@thefnmark}$\hss}} 
+ to 0truept{$^{\@thefnmark}$\hss}} 
  \twocolumn[\@maketitle] 
  \@thanks
  \endgroup
@@ -38,30 +45,30 @@
  \let\@maketitle\relax
  \gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax}
 % 表題の配置 
-% 本文の始まる位置を下げたい場合には，この6.5という値を大きくすればよい。
-%\def\@maketitle{\vbox to 3.7in{\hsize\textwidth
-\def\@maketitle{\vbox to 6.5in{\hsize\textwidth
+% 本文の始まる位置を下げたい場合には，この1.4という値を大きくすればよい。
+%\def\@maketitle{\vbox to 3.7truein{\hsize\textwidth
+\def\@maketitle{\vbox to 6.5truein{\hsize\textwidth
 \linewidth\hsize
  \centering
  {\Large \bf\@title \par}
 % {\LARGE \hspace*{\hyodaioffset}\@title \par}
  \medskip
  {\large \begin{tabular}[t]{c}\@author\end{tabular}\par} 
- \vskip 4mm {\normalsize\bf \@etitle \par}
- \vskip 2mm {\normalsize \@eauthor \par}
+ \vskip 4truemm {\normalsize\bf \@etitle \par}
+ \vskip 2truemm {\normalsize \@eauthor \par}
  \def\baselinestretch{0.8}%add
- \vskip 7mm {\begin{minipage}{0.9\textwidth}%
- \parindent2em\noindent\baselineskip 12pt% アブストラクトの行間を狭める
- {\bf 概要 : }\@abstract \\[3.5mm]%add
+ \vskip 7truemm {\begin{minipage}{0.9\textwidth}%
+ \parindent2em\noindent\baselineskip 12truept% アブストラクトの行間を狭める
+ {\bf 概要 : }\@abstract \\[3.5truemm]%add
  \@keywords\par\end{minipage} \par}
- \vskip 5mm {\begin{minipage}{0.9\textwidth}%
- \parindent2em\noindent\baselineskip 12pt% アブストラクトの行間を狭める
- {\bf Abstract:~}\@eabstract \\[3.5mm]%add
+ \vskip 5truemm {\begin{minipage}{0.9\textwidth}%
+ \parindent2em\noindent\baselineskip 12truept% アブストラクトの行間を狭める
+ {\bf Abstract:~}\@eabstract \\[3.5truemm]%add
  \@ekeywords\par\end{minipage} \par}
 
  \vfil \vfil}
 }
-\def\copyrightspace{\footnotetext[1]{\mbox{}\vrule height .80in width 0pt}}
+\def\copyrightspace{\footnotetext[1]{\mbox{}\vrule height .80truein width 0truept}}
 % 図表の量の指定
 \setcounter{topnumber}{10}
 \def\topfraction{.99}
@@ -71,13 +78,13 @@
 \def\textfraction{.0}
 \setcounter{dbltopnumber}{4}
 \def\dbltopfraction{.99}
-\floatsep 12pt plus 12pt minus 12pt
-\textfloatsep 20pt plus 12pt minus 12pt
-\intextsep 12pt plus 12pt minus 12pt
-\def\fnum@figure{Fig. \thefigure} 
-\def\fnum@table{Table \thetable}   
+\floatsep 12truept plus 12truept minus 12truept
+\textfloatsep 20truept plus 12truept minus 12truept
+\intextsep 12truept plus 12truept minus 12truept
+\def\fnum@figure{図 \thefigure} 
+\def\fnum@table{表 \thetable}   
 \long\def\@makecaption#1#2{
- \vskip 10pt 
+ \vskip 10truept 
  \setbox\@tempboxa\hbox{#1\ \ #2}
  \ifdim \wd\@tempboxa >\hsize \unhbox\@tempboxa\par \else \hbox
 to\hsize{\hfil\box\@tempboxa\hfil} 
@@ -114,7 +121,7 @@ to\hsize{\hfil\box\@tempboxa\hfil}
     \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
     {\rule{\z@}{\footnotesep}\ignorespaces#1\strut}}}
 
-\long\def\@makefntext#1{\noindent$\@thefnmark$\hskip 10pt #1}
+\long\def\@makefntext#1{\noindent$\@thefnmark$\hskip 10truept #1}
 
 \def\@makefnmark{\smash{\hbox{$^{\@thefnmark}$}}} % smashed to make it
                                                   % zero height
@@ -159,34 +166,36 @@ to\hsize{\hfil\box\@tempboxa\hfil}
  {subparagraph}{4}{\parindent}{1.25ex plus 1ex minus 
  .2ex}{-1em}{\normalsize\bf}}
 % リスト環境のパラメータ
-\leftmargini 18pt
-\leftmarginii 16pt \leftmarginiii 13pt \leftmarginiv 10pt \leftmarginv 10pt
-\leftmarginvi 10pt
+\leftmargini 18truept
+\leftmarginii 16truept \leftmarginiii 13truept \leftmarginiv 10truept \leftmarginv 10truept
+\leftmarginvi 10truept
 \leftmargin\leftmargini
-\labelsep 5pt
+\labelsep 5truept
 \labelwidth\leftmargini\advance\labelwidth-\labelsep
 \def\@listI{\leftmargin=\leftmargini
- \topsep=0pt \parsep=0pt \itemsep=0pt \parsep=0pt \itemindent 0pt \relax}
+ \topsep=0truept \parsep=0truept \itemsep=0truept \parsep=0truept \itemindent 0truept \relax}
 \def\@listii{\leftmargin=\leftmarginii
  \labelwidth=\leftmarginii
  \advance\labelwidth by -\labelsep
- \topsep=0pt \parsep=0pt \itemsep=0pt \parsep=0pt \itemindent 0pt \relax}
+ \topsep=0truept \parsep=0truept \itemsep=0truept \parsep=0truept \itemindent 0truept \relax}
 \let\@listi\@listI \@listi 
 % 参考文献
 \def\thebibliography#1{\section*{参考文献}
   \global\def\@listi{\leftmargin\leftmargini
                \labelwidth\leftmargini \advance\labelwidth-\labelsep
-               \topsep 1pt plus 2pt minus 1pt
-               \parsep 0.25ex plus 1pt \itemsep 0.25ex plus 1pt}
+               \topsep 1truept plus 2truept minus 1truept
+               \parsep 0.25ex plus 1truept \itemsep 0.25ex plus 1truept}
   \list {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
     \advance\leftmargin\labelsep\usecounter{enumi}}
     \def\newblock{\hskip .11em plus .33em minus -.07em}
     \sloppy
     \sfcode`\.=1000\relax}
+
+\emergencystretch=1em
+
+\renewcommand{\figurename}{図}
+\renewcommand{\tablename}{表}
+
 %
 %
 % EOF  
-
-
-
-
