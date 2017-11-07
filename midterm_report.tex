@@ -149,11 +149,12 @@ OpenStackはマイクロサービスアーキテクチャを採用しており�
 
 \section{実装状況}
 \subsection{研究室におけるクラウドの構築}
-まず，未来大における教室PCのOSはMac教室のMacOSXとWindows教室のWindowsが存在する．
-従って，実装では，クラウドの計算資源としてMacOSXとWindowsが動作している計算機を対象とする．
+本学における教室PCのOSはmacOSとWindowsが存在する．
+従って，本学におけるクラウドの実装としては，macOSとWindowsが動作している計算機を対象とする．
 現在はプロトタイプとして，研究室内にOpenStackを利用してプライベートなクラウドを構築している段階である．
-プロトタイプの構成として，コントローラーノードのOSはCentOS7を採用している．
-計算ノードとしてはCentOS7を搭載した計算機が1台とMacOSXを搭載したMac miniが存在する．
+クラウドの計算資源として，まずはCentOS7を利用した後，macOS High Sierraを追加する予定である．
+その後は，macOS High Sierra上の仮想サーバの定期的なバックアップの作成
+及び仮想サーバの一時停止と再開の機構を実装する予定である．
 
 \section{おわりに}
 \subsection{まとめ}
