@@ -1,9 +1,14 @@
 .SUFFIXES: .bb .tex .dvi .pdf
 
+PDFIMAGES = graph1
+
 all: midterm_report.pdf
 
 clean:
-	rm -f *.aux *.dvi *.log *.bbl *.blg
+	rm -f *.xbb *.aux *.dvi *.log *.bbl *.blg
+
+.pdf.bb:
+	extractbb $<
 
 .tex.dvi:
 	platex -kanji=utf8 $<
@@ -15,4 +20,4 @@ clean:
 	dvipdfmx $<
 
 midterm_report.pdf: midterm_report.tex midterm_report.dvi
-midterm_report.dvi: funinfosys.sty ref.bib
+midterm_report.dvi: funinfosys.sty ref.bib $(addsuffix .bb, $(PDFIMAGES))
