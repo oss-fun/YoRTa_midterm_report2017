@@ -2,3 +2,8 @@
 *.log
 *.synctex.gz
 midterm_report.pdf
+
+graph1.xbb
+midterm_report.bbl
+midterm_report.blg
+midterm_report.dvi
