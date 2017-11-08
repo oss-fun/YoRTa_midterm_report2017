@@ -15,7 +15,7 @@ b1014120 永井陽太\\指導教員 : 松原克弥
 }
 \course{Advanced ICT Course} %% 高度ICTコースの場合はこちらを使用
 \title{教室PCの余剰資源を活用した学内向けオープンクラウドの構築}
-\etitle{Development of open cloud service utilized surplus resources of classroom computers on campus}
+\etitle{Implementing an Open Cloud System with Idled Classroom PCs}
 \eauthor{Yota Nagai}
 \abstract{情報系学科大学では，演習活動の高度化により，学生が実践的な開発を行うようになってきている．
 それに伴い，大学に求められる情報基盤も高度になってきており，クラウドコンピューティングが大学に導入されるようになってきている．
@@ -31,7 +31,7 @@ b1014120 永井陽太\\指導教員 : 松原克弥
 At universities of the Department of Information Systems, students are beginning to develop practical development by advancement of exercise activities. Along with that, the information infrastructure required for universities is getting higher, and cloud computing has been introduced to universities. However, when building cloud computing on-premises, initial investment such as purchasing expensive server machines and preparing a server management room increases at universities that do not have an information infrastructure center. On the other hand, due to the popularization of BYOD, classroom PCs are no longer used except for lectures. Therefore, in this research, we propose a method to realize cloud computing in campus utilizing surplus computing resources of classroom PC. We propose a method to utilize classroom PC without affecting lecture by implementing mechanisms such as alive monitoring of classroom PC, creation of regular backup, load balancing and temporary stop.	
 }
 \ekeywords{Cloud, Virtualization}
-\renewcommand{\baselinestretch}{0.93}
+\renewcommand{\baselinestretch}{0.95}
 \begin{document}
 \maketitle
 %\vspace*{-.5cm}
@@ -77,9 +77,9 @@ At universities of the Department of Information Systems, students are beginning
 % 第4章では，実装状況について述べる．第5章では，まとめと今後の課題について述べる．
 
 \begin{figure*}[h]
-    \includegraphics[scale=0.47]{graph1.pdf}
-	\begin{center}図1　システムの概要\end{center}
+	\includegraphics[scale=0.47]{graph1.pdf}
 	\label{fig:graph1}
+	\begin{center}図1　システムの概要\end{center}
 \end{figure*}
 
 \section{大学におけるクラウド利用の欠点及び現状}
@@ -139,13 +139,13 @@ OpenStackはマイクロサービスアーキテクチャを採用しており�
 	\item Swift：イメージファイルやメディアファイル等のオブジェクトを保存する為のストレージの提供及び管理を担っている．レプリケーションにも対応しており，障害への対策も可能である．
 \end{itemize}
 \subsubsection{教室PCの死活監視と定期的なバックアップ}
-計算資源として利用できる教室PCが変化問題には，Novaの死活監視によって対応が可能である(図\ref{fig:graph1}のa)．
+計算資源として利用できる教室PCが変化問題には，Novaの死活監視によって対応が可能である(図1のa)．
 稼働中の仮想インスタンスのデータが消失してしまう可能性については，
-定期的に仮想インスタンスのスナップショットを作成し，オブジェクトストレージSwiftに保存することで対応する(図\ref{fig:graph1}のb)．
+定期的に仮想インスタンスのスナップショットを作成し，オブジェクトストレージSwiftに保存することで対応する(図1のb)．
 \subsubsection{教室PCの負荷分散及び仮想インスタンスの一時停止}
-講義による教室PCの利用は講義時間割から予測が可能なので，講義が始まる前に利用されない教室PCへ仮想インスタンスをライブマイグレーションすることで対応が可能である(図\ref{fig:graph1}のc)．
+講義による教室PCの利用は講義時間割から予測が可能なので，講義が始まる前に利用されない教室PCへ仮想インスタンスをライブマイグレーションすることで対応が可能である(図1のc)．
 また，講義によって計算資源が枯渇してしまう問題に対しては，一定期間のアクセス数等の仮想インスタンスの利用状況から
-もっとも利用されていない仮想インスタンスを決定するアルゴリズムを考案し，そのアルゴリズムによって決定されたインスタンスを一時停止状態にすることで対応が可能である(図\ref{fig:graph1}のd)．
+もっとも利用されていない仮想インスタンスを決定するアルゴリズムを考案し，そのアルゴリズムによって決定されたインスタンスを一時停止状態にすることで対応が可能である(図1のd)．
 
 \section{実装状況}
 \subsection{研究室におけるクラウドの構築}
