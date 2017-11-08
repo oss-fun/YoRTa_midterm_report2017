@@ -77,6 +77,12 @@ At universities of the Department of Information Systems, students are beginning
 % 第3章で，教室PCを利用した学内オープンクラウドを実現するための技術的課題を示し，その解決方法について論じる．
 % 第4章では，実装状況について述べる．第5章では，まとめと今後の課題について述べる．
 
+\begin{figure*}[h]
+    \includegraphics[scale=0.47]{graph1.pdf}
+	\begin{center}図1　システムの概要\end{center}
+	\label{graph1}
+\end{figure*}
+
 \section{大学におけるクラウド利用の欠点および現状}
 \subsection{商用クラウドサービスの欠点}
 商用のクラウドサービスを利用する場合の欠点としては，
@@ -127,11 +133,6 @@ BYODの普及により，現在は演習用の教室PCの利用が減ってき�
 \subsubsection{教室PCの利用による計算資源の枯渇}
 クラウドの計算資源として教室PCが利用されていることで教室PCの動作が重くなり，講義に影響がでる可能性が存在する．
 また，学内に存在する教室PCのほとんどが講義によって利用されてしまい，計算資源が枯渇する可能性も存在する．
-\begin{figure*}[h]
-    \includegraphics[scale=0.47]{graph1.pdf}
-	\begin{center}図1　システムの概要\end{center}
-	\label{graph1}
-\end{figure*}
 
 \subsection{実現手法}
 本システムはオープンソースのクラウド基盤であるOpenStack\cite{openstack}の利用及び追加の機構の実装によって実現する．
